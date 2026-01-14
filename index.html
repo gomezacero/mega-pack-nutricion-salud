@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mega Pack de Nutrición y Salud</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                red: '#E31E24',
+                green: '#004B23',
+                lime: '#38B000',
+                yellow: '#FFD60A',
+                dark: '#0D0D0D',
+              },
+              coral: {
+                DEFAULT: '#E31E24',
+                hover: '#C2181D',
+              },
+            },
+            fontFamily: {
+              sans: ['Montserrat', 'sans-serif'],
+              impact: ['Archivo Black', 'sans-serif'],
+            },
+            keyframes: {
+              shimmer: {
+                '100%': { transform: 'translateX(100%)' },
+              },
+              bounceIn: {
+                '0%': { transform: 'scale(0.8)', opacity: '0' },
+                '70%': { transform: 'scale(1.05)', opacity: '1' },
+                '100%': { transform: 'scale(1)', opacity: '1' }
+              },
+              glow: {
+                '0%, 100%': { boxShadow: '0 0 5px rgba(227, 30, 36, 0.2), 0 0 10px rgba(227, 30, 36, 0.2)' },
+                '50%': { boxShadow: '0 0 20px rgba(227, 30, 36, 0.6), 0 0 30px rgba(227, 30, 36, 0.4)' }
+              }
+            },
+            animation: {
+              'glow-fast': 'glow 1.5s ease-in-out infinite',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      html { scroll-behavior: smooth; }
+      body { background-color: #ffffff; color: #1a1a1a; overflow-x: hidden; }
+      .text-shadow { text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+      .banner-clip { clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%); }
+      .preserve-3d { transform-style: preserve-3d; perspective: 1000px; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "@google/genai": "https://esm.sh/@google/genai@^1.35.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

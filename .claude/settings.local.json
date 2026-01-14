@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(copy \"C:\\\\Users\\\\Santiago\\\\Downloads\\\\img1.webp\" \"C:\\\\Users\\\\Santiago\\\\Documents\\\\GitHub\\\\mega-pack-de-nutrición-y-salud\\\\images\\\\img1.webp\")",
+      "Bash(copy \"C:\\\\Users\\\\Santiago\\\\Downloads\\\\img2.webp\" \"C:\\\\Users\\\\Santiago\\\\Documents\\\\GitHub\\\\mega-pack-de-nutrición-y-salud\\\\images\\\\img2.webp\")",
+      "Bash(copy \"C:\\\\Users\\\\Santiago\\\\Downloads\\\\img3.webp\" \"C:\\\\Users\\\\Santiago\\\\Documents\\\\GitHub\\\\mega-pack-de-nutrición-y-salud\\\\images\\\\img3.webp\")",
+      "Bash(copy \"C:\\\\Users\\\\Santiago\\\\Downloads\\\\img4.webp\" \"C:\\\\Users\\\\Santiago\\\\Documents\\\\GitHub\\\\mega-pack-de-nutrición-y-salud\\\\images\\\\img4.webp\")",
+      "Bash(copy:*)",
+      "Bash(copy \"C:\\\\Users\\\\Santiago\\\\Downloads\\\\img7.webp\" \"C:\\\\Users\\\\Santiago\\\\Documents\\\\GitHub\\\\mega-pack-de-nutrición-y-salud\\\\images\\\\img7.webp\")",
+      "Bash(gh auth:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}
