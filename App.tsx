@@ -343,21 +343,16 @@ const App: React.FC = () => {
       <section className="bg-white pb-10 md:pb-20 px-2 md:px-4">
         <div className="container mx-auto max-w-6xl relative text-center">
           <div className="relative inline-block max-w-full">
-            {heroImages.map((image, index) => {
-              const isCurrentOrNext = index === currentImageIndex || index === (currentImageIndex + 1) % heroImages.length;
-              if (!isCurrentOrNext && index !== 0) return null;
-
-              return (
-                <img
-                  key={index}
-                  src={image}
-                  alt={`SUPER PACK Saludable - Imagen ${index + 1}`}
-                  loading={index === 0 ? "eager" : "lazy"}
-                  fetchPriority={index === 0 ? "high" : "auto"}
-                  className={`rounded-2xl md:rounded-3xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.3)] md:shadow-[0_50px_100px_-20px_rgba(0,0,0,0.4)] border-4 md:border-8 border-white max-w-full h-auto max-h-[400px] md:max-h-[600px] lg:max-h-[800px] object-contain transition-opacity duration-700 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0 absolute top-0 left-0'}`}
-                />
-              );
-            })}
+            {heroImages.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                alt={`SUPER PACK Saludable - Imagen ${index + 1}`}
+                loading={index === 0 ? "eager" : "lazy"}
+                fetchPriority={index === 0 ? "high" : "auto"}
+                className={`rounded-2xl md:rounded-3xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.3)] md:shadow-[0_50px_100px_-20px_rgba(0,0,0,0.4)] border-4 md:border-8 border-white max-w-full h-auto max-h-[400px] md:max-h-[600px] lg:max-h-[800px] object-contain transition-opacity duration-700 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0 absolute top-0 left-0'}`}
+              />
+            ))}
           </div>
         </div>
       </section>
