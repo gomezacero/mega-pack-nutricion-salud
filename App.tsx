@@ -216,72 +216,60 @@ const App: React.FC = () => {
 
   return (
     <div className="font-sans antialiased pb-20 md:pb-0">
-      {/* Exit Intent Popup */}
+      {/* Exit Intent Popup - Mobile Optimized */}
       {showExitPopup && (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[200] flex items-center justify-center p-2 md:p-4">
           <div className="absolute inset-0 bg-brand-dark/95 backdrop-blur-lg" onClick={() => setShowExitPopup(false)}></div>
-          <div className="relative bg-white w-full max-w-2xl rounded-[2.5rem] md:rounded-[3rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.5)] border-2 md:border-4 border-brand-red animate-[bounceIn_0.5s_ease-out]">
-            {/* Close Button - Larger Hit Area for Mobile */}
-            <button 
-              onClick={() => setShowExitPopup(false)} 
-              className="absolute top-2 right-2 md:top-6 md:right-6 text-white md:text-gray-400 hover:text-brand-red transition-colors z-[60] w-12 h-12 flex items-center justify-center bg-brand-dark/20 md:bg-transparent rounded-full"
+          <div className="relative bg-white w-full max-w-2xl max-h-[95vh] overflow-y-auto rounded-2xl md:rounded-[3rem] shadow-[0_50px_100px_rgba(0,0,0,0.5)] border-2 md:border-4 border-brand-red animate-[bounceIn_0.5s_ease-out]">
+            {/* Close Button */}
+            <button
+              onClick={() => setShowExitPopup(false)}
+              className="absolute top-2 right-2 md:top-4 md:right-4 text-white hover:text-brand-red transition-colors z-[60] w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-brand-dark/40 rounded-full"
               aria-label="Cerrar"
             >
-              <svg className="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12" /></svg>
+              <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
-            
-            <div className="bg-brand-red py-6 md:py-8 px-6 md:px-8 text-center text-white relative">
-              <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
-              <h2 className="relative z-10 font-black text-3xl md:text-6xl uppercase tracking-tighter leading-none mb-1 md:mb-2 italic text-balance">¡ESPERA! NO TE RINDAS...</h2>
-              <p className="relative z-10 font-bold text-sm md:text-xl uppercase opacity-80 tracking-widest text-balance">Tu salud merece este último intento</p>
+
+            <div className="bg-brand-red py-4 md:py-6 px-4 md:px-8 text-center text-white relative">
+              <h2 className="relative z-10 font-black text-2xl md:text-5xl uppercase tracking-tighter leading-none mb-1 italic">¡ESPERA!</h2>
+              <p className="relative z-10 font-bold text-xs md:text-lg uppercase opacity-90">Tu salud merece este último intento</p>
             </div>
 
-            <div className="p-6 md:p-12 text-center">
-              <p className="text-gray-600 text-base md:text-2xl font-medium leading-relaxed mb-6 md:mb-8 text-balance">
-                Sabemos que duele mirarse al espejo y no reconocerse. Que el cansancio te roba momentos con tu familia. No dejes pasar esta oportunidad por miedo al fracaso. <br/>
-                <span className="font-black text-brand-dark text-lg md:text-3xl block mt-4 uppercase">¿Vas a dejar que la inflamación gane hoy?</span>
+            <div className="p-4 md:p-8 text-center">
+              <p className="text-gray-600 text-sm md:text-xl font-medium leading-relaxed mb-4 md:mb-6">
+                No dejes pasar esta oportunidad.
+                <span className="font-black text-brand-dark text-base md:text-2xl block mt-2 uppercase">¿Vas a dejar que la inflamación gane?</span>
               </p>
 
-              <div className="bg-brand-yellow/20 border-2 md:border-4 border-dashed border-brand-yellow p-4 md:p-8 rounded-3xl md:rounded-[2rem] mb-6 md:mb-10 transform -rotate-1 relative group">
-                <div className="absolute -top-4 md:-top-5 left-1/2 -translate-x-1/2 bg-brand-yellow text-brand-dark px-4 md:px-6 py-1 rounded-full font-black text-[10px] md:text-xs uppercase tracking-widest shadow-md">RECOMPENSA FINAL</div>
-                <p className="text-brand-dark font-black text-xs md:text-xl uppercase mb-1 md:mb-2 tracking-tighter">SÓLO POR LOS PRÓXIMOS 10 MINUTOS:</p>
-                <div className="flex flex-col items-center gap-1 md:gap-3">
-                  <p className="text-gray-500 font-bold uppercase text-[10px] md:text-xs">¡CLIC ABAJO PARA COPIAR TU CUPÓN!</p>
-                  <div 
-                    onClick={handleCopyCoupon}
-                    className="relative group/coupon cursor-pointer active:scale-95 transition-transform"
-                  >
-                    <span className={`block text-4xl md:text-7xl font-impact tracking-tight bg-white px-8 md:px-12 py-3 md:py-6 rounded-xl md:rounded-2xl shadow-xl border-4 ${isCopied ? 'text-brand-lime border-brand-lime scale-105' : 'text-brand-red border-brand-red animate-glow-fast'} transition-all duration-300 transform`}>
-                      {isCopied ? '¡COPIADO!' : 'LOQUIERO'}
-                    </span>
-                    <div className={`absolute -right-4 -top-4 ${isCopied ? 'bg-brand-lime' : 'bg-brand-red'} text-white text-[10px] font-black px-3 py-1.5 rounded-md rotate-12 shadow-lg animate-bounce transition-colors`}>
-                      {isCopied ? '✅ LISTO' : '⚡ TÓCAME'}
-                    </div>
-                  </div>
-                  <p className="text-brand-red font-black text-lg md:text-3xl uppercase tracking-widest mt-1 md:mt-2">¡20% EXTRA DE DESCUENTO!</p>
+              <div className="bg-brand-yellow/20 border-2 border-dashed border-brand-yellow p-3 md:p-6 rounded-2xl mb-4 md:mb-6 relative">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-yellow text-brand-dark px-3 py-0.5 rounded-full font-black text-[9px] md:text-xs uppercase">CUPÓN EXTRA</div>
+                <p className="text-gray-500 font-bold uppercase text-[9px] md:text-xs mb-2">¡TOCA PARA COPIAR!</p>
+                <div
+                  onClick={handleCopyCoupon}
+                  className="cursor-pointer active:scale-95 transition-transform"
+                >
+                  <span className={`block text-3xl md:text-5xl font-impact tracking-tight bg-white px-6 md:px-10 py-2 md:py-4 rounded-xl shadow-lg border-3 ${isCopied ? 'text-brand-lime border-brand-lime' : 'text-brand-red border-brand-red animate-glow-fast'} transition-all`}>
+                    {isCopied ? '¡COPIADO!' : 'LOQUIERO'}
+                  </span>
                 </div>
+                <p className="text-brand-red font-black text-base md:text-2xl uppercase mt-2">¡20% EXTRA!</p>
               </div>
 
-              <div className="flex flex-col gap-4">
-                <a 
-                  href={checkoutUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative inline-flex items-center justify-center bg-brand-lime text-white text-lg md:text-4xl font-black px-8 md:px-12 py-5 md:py-8 rounded-full shadow-[0_20px_50px_rgba(56,176,0,0.3)] hover:scale-105 active:scale-95 transition-all w-full uppercase text-center overflow-hidden"
-                >
-                  <span className="relative z-10">SÍ, QUIERO MI CAMBIO AHORA</span>
-                </a>
-                
-                {/* Secondary Dismissal Link for Mobile */}
-                <button 
-                  onClick={() => setShowExitPopup(false)}
-                  className="text-gray-400 font-bold uppercase text-[10px] md:text-sm tracking-widest hover:text-brand-red transition-colors underline underline-offset-4 decoration-1"
-                >
-                  No gracias, prefiero seguir igual
-                </button>
-              </div>
-              
-              <p className="mt-4 md:mt-6 font-bold text-gray-400 uppercase tracking-widest text-[9px] md:text-xs">Acceso inmediato. Descarga en 1 minuto.</p>
+              <a
+                href={checkoutUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-brand-lime text-white text-base md:text-2xl font-black px-6 md:px-10 py-4 md:py-6 rounded-full shadow-lg hover:scale-105 active:scale-95 transition-all w-full uppercase text-center mb-3"
+              >
+                SÍ, QUIERO MI CAMBIO AHORA
+              </a>
+
+              <button
+                onClick={() => setShowExitPopup(false)}
+                className="text-gray-400 font-bold uppercase text-[9px] md:text-sm hover:text-brand-red transition-colors underline"
+              >
+                No gracias, prefiero seguir igual
+              </button>
             </div>
           </div>
         </div>
