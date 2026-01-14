@@ -9,7 +9,18 @@
       "Bash(copy \"C:\\\\Users\\\\Santiago\\\\Downloads\\\\img7.webp\" \"C:\\\\Users\\\\Santiago\\\\Documents\\\\GitHub\\\\mega-pack-de-nutrición-y-salud\\\\images\\\\img7.webp\")",
       "Bash(gh auth:*)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nInitial commit: Mega Pack de Nutrición y Salud\n\n- Landing page con React + TypeScript + Tailwind\n- Carrusel de imágenes promocionales con rotación automática\n- Contador de tiempo y prueba social dinámica\n- Integración con Hotmart para pagos\n- Popup de salida con cupón de descuento\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(winget install:*)",
+      "Bash(\"/c/Program Files/GitHub CLI/gh.exe\" auth status)",
+      "Bash(\"/c/Program Files \\(x86\\)/GitHub CLI/gh.exe\" auth status)",
+      "Bash(\"/c/Program Files/GitHub CLI/gh.exe\" auth login --web --git-protocol https)",
+      "Bash(\"/c/Program Files/GitHub CLI/gh.exe\" repo create mega-pack-nutricion-salud --public --source=. --remote=origin --push --description \"Landing page de Mega Pack de Nutrición y Salud - React + TypeScript + Tailwind\")",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(dir:*)",
+      "Bash(npm install:*)",
+      "Bash(node -e:*)"
     ]
   }
 }
