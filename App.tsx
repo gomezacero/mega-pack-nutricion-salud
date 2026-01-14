@@ -318,39 +318,46 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Hero Header */}
-      <header className="bg-white pt-10 pb-6 px-4">
+      {/* Main Hero Header - Mobile First */}
+      <header className="bg-white pt-6 md:pt-10 pb-4 md:pb-6 px-3 md:px-4">
         <div className="container mx-auto max-w-5xl text-center">
-          <h1 className="font-sans font-black text-brand-red text-4xl md:text-7xl leading-tight mb-4 tracking-tight text-balance">
+          <h1 className="font-sans font-black text-brand-red text-3xl md:text-5xl lg:text-7xl leading-tight mb-3 md:mb-4 tracking-tight text-balance">
             ¿Te sientes con sobrepeso,<br />
             hinchada, cansada?
           </h1>
-          
-          <div className="bg-brand-green text-white py-4 px-6 inline-block w-full max-w-4xl rounded-sm mb-6 shadow-xl transform -rotate-1">
-            <p className="font-sans font-extrabold text-xl md:text-3xl uppercase tracking-wide text-balance">
+
+          <div className="bg-brand-green text-white py-3 md:py-4 px-4 md:px-6 inline-block w-full max-w-4xl rounded-sm mb-4 md:mb-6 shadow-xl transform -rotate-1">
+            <p className="font-sans font-extrabold text-base md:text-xl lg:text-3xl uppercase tracking-wide text-balance">
               <span className="text-brand-yellow">¡DILE ADIÓS A LA INFLAMACIÓN!</span> En solo 7 DÍAS puedes cambiar tu cuerpo sin pasar hambre y comiendo lo que te gusta
             </p>
           </div>
 
-          <p className="text-xl md:text-3xl text-gray-800 font-medium mb-10 text-balance">
+          <p className="text-base md:text-xl lg:text-3xl text-gray-800 font-medium mb-6 md:mb-10 text-balance">
             No estás <span className="text-brand-red font-bold">fallando</span>. Solo te falta la <span className="text-brand-lime font-bold">información correcta</span>.<br />
             Con este <span className="text-brand-lime font-bold">MÉTODO</span> es el <span className="text-brand-lime font-bold">VERDADERO PASO A PASO</span>
           </p>
         </div>
       </header>
 
-      {/* Hero Product Mockup - Image Carousel */}
-      <section className="bg-white pb-20 px-4">
+      {/* Hero Product Mockup - Image Carousel (Optimized for Mobile) */}
+      <section className="bg-white pb-10 md:pb-20 px-2 md:px-4">
         <div className="container mx-auto max-w-6xl relative text-center">
           <div className="relative inline-block max-w-full">
-            {heroImages.map((image, index) => (
-              <img
-                key={index}
-                src={image}
-                alt={`SUPER PACK Saludable - Imagen ${index + 1}`}
-                className={`rounded-3xl shadow-[0_50px_100px_-20px_rgba(0,0,0,0.4)] border-8 border-white max-w-full h-auto max-h-[800px] object-contain transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0 absolute top-0 left-0'}`}
-              />
-            ))}
+            {heroImages.map((image, index) => {
+              const isCurrentOrNext = index === currentImageIndex || index === (currentImageIndex + 1) % heroImages.length;
+              if (!isCurrentOrNext && index !== 0) return null;
+
+              return (
+                <img
+                  key={index}
+                  src={image}
+                  alt={`SUPER PACK Saludable - Imagen ${index + 1}`}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  fetchPriority={index === 0 ? "high" : "auto"}
+                  className={`rounded-2xl md:rounded-3xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.3)] md:shadow-[0_50px_100px_-20px_rgba(0,0,0,0.4)] border-4 md:border-8 border-white max-w-full h-auto max-h-[400px] md:max-h-[600px] lg:max-h-[800px] object-contain transition-opacity duration-700 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0 absolute top-0 left-0'}`}
+                />
+              );
+            })}
           </div>
         </div>
       </section>
