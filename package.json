@@ -8,8 +8,10 @@
   ],
   "scripts": {
     "dev": "npm run dev --workspace=superpack-saludable",
+    "dev:home": "npm run dev --workspace=home",
     "build": "npm run build --workspace=superpack-saludable",
-    "build:all": "npm run build -ws",
+    "build:home": "npm run build --workspace=home",
+    "build:all": "npm run build --workspace=home && npm run build --workspace=superpack-saludable",
     "preview": "npm run preview --workspace=superpack-saludable"
   },
   "dependencies": {

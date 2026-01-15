@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
       },
       build: {
         outDir: '../../dist/superpack-saludable',
-        emptyOutDir: true,
+        emptyOutDir: false,
       },
       plugins: [react()],
       define: {
