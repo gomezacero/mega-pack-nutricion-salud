@@ -38,9 +38,9 @@ const App: React.FC = () => {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-          {landings.map((landing, index) => (
+          {landings.map((landing) => (
             <a
-              key={index}
+              key={landing.href}
               href={landing.href}
               className="group block w-full max-w-sm bg-white rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all duration-300"
             >

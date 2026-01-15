@@ -123,7 +123,7 @@ const App: React.FC = () => {
       keywords: ["energía", "café"]
     },
     {
-      title: "Grassa Natural",
+      title: "Grasa Natural",
       text: "Perder grasa corporal de forma natural y sostenida",
       icon: "🌱",
       gradient: "from-emerald-100 to-green-50",
@@ -436,7 +436,7 @@ const App: React.FC = () => {
           <div className="bg-gray-50 rounded-[2.5rem] md:rounded-[4rem] p-6 md:p-24 text-center shadow-[0_40px_100px_rgba(0,0,0,0.08)] relative overflow-hidden border-2 border-brand-red/10">
             <div className="relative z-10">
               <h4 className="text-xl md:text-3xl font-black mb-4 md:mb-6 uppercase tracking-[0.1em] text-brand-red leading-tight">ACCESO TOTAL E INSTANTÁNEO</h4>
-              <p className="text-gray-500 font-bold mb-8 md:mb-10 text-base md:text-xl uppercase tracking-tight max-w-2xl mx-auto px-2 text-balance text-balance">Consigue el SUPER PACK completo de 6 ebooks premium por menos de lo que cuesta una cena</p>
+              <p className="text-gray-500 font-bold mb-8 md:mb-10 text-base md:text-xl uppercase tracking-tight max-w-2xl mx-auto px-2 text-balance">Consigue el SUPER PACK completo de 6 ebooks premium por menos de lo que cuesta una cena</p>
               
               <div className="flex flex-col items-center gap-6 md:gap-10 mb-10 md:mb-14">
                  <div className="flex flex-col items-center mb-2">
@@ -474,7 +474,7 @@ const App: React.FC = () => {
                 <span className="text-xl md:text-2xl font-black text-brand-dark uppercase">15 DÍAS</span>
              </div>
              <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase text-brand-dark">TU COMPRA ESTÁ <span className="text-brand-lime">100% PROTEGIDA</span></h2>
-             <p className="text-lg md:text-xl text-gray-500 font-bold max-w-2xl mx-auto italic text-balance">"Prueba el método completo. Si en 15 días no te sientes con más energía and menos inflamación, te devolvemos el 100% de tu dinero. Sin preguntas, sin trabas."</p>
+             <p className="text-lg md:text-xl text-gray-500 font-bold max-w-2xl mx-auto italic text-balance">"Prueba el método completo. Si en 15 días no te sientes con más energía y menos inflamación, te devolvemos el 100% de tu dinero. Sin preguntas, sin trabas."</p>
           </div>
           
           <div className="bg-gray-50 rounded-[3rem] border-2 border-gray-200 overflow-hidden shadow-2xl">
@@ -518,9 +518,9 @@ const App: React.FC = () => {
         <div className="container mx-auto text-center">
           <p className="font-bold opacity-60 mb-6 uppercase tracking-widest text-xs">MÉTODO PROBADO DE ALTA EFECTIVIDAD</p>
           <div className="flex flex-wrap justify-center gap-8 text-xs opacity-40 font-bold uppercase tracking-widest">
-            <a href="#" className="hover:text-brand-yellow transition-colors">Privacidad</a>
-            <a href="#" className="hover:text-brand-yellow transition-colors">Términos</a>
-            <a href="#" className="hover:text-brand-yellow transition-colors">Soporte</a>
+            <span>Privacidad</span>
+            <span>Términos</span>
+            <span>Soporte</span>
           </div>
         </div>
       </footer>

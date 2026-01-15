@@ -4,6 +4,7 @@
   "rewrites": [
     { "source": "/superpack-saludable", "destination": "/superpack-saludable/index.html" },
     { "source": "/superpack-saludable/", "destination": "/superpack-saludable/index.html" },
-    { "source": "/superpack-saludable/:path*", "destination": "/superpack-saludable/:path*" }
+    { "source": "/superpack-saludable/:path*", "destination": "/superpack-saludable/:path*" },
+    { "source": "/((?!superpack-saludable|assets).*)", "destination": "/index.html" }
   ]
 }
