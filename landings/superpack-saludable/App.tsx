@@ -81,7 +81,7 @@ const App: React.FC = () => {
       const scrollPos = window.scrollY;
       const scrolledPercentage = (scrollPos + winHeight) / docHeight;
 
-      if (scrolledPercentage >= 0.7 && !hasReachedThreshold) {
+      if (scrolledPercentage >= 0.5 && !hasReachedThreshold) {
         setHasReachedThreshold(true);
         thresholdReachedTime = Date.now();
 
@@ -89,7 +89,7 @@ const App: React.FC = () => {
         if (isMobile && !hasShownExitPopup) {
           mobileInactivityTimer = setTimeout(() => {
             showPopup();
-          }, 45000);
+          }, 15000);
         }
       }
 
@@ -101,7 +101,7 @@ const App: React.FC = () => {
         if (scrollDelta > 50) {
           scrollUpCount++;
           // Show popup after 3 rapid scroll-ups
-          if (scrollUpCount >= 3) {
+          if (scrollUpCount >= 2) {
             showPopup();
           }
         } else if (scrollDelta < -20) {
@@ -117,7 +117,7 @@ const App: React.FC = () => {
         clearTimeout(mobileInactivityTimer);
         mobileInactivityTimer = setTimeout(() => {
           showPopup();
-        }, 45000);
+        }, 15000);
       }
     };
 
@@ -272,55 +272,57 @@ const App: React.FC = () => {
     <div className="font-sans antialiased pb-20 md:pb-0">
       {/* Exit Intent Popup - Mobile Optimized */}
       {showExitPopup && (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center p-2 md:p-4">
+        <div className="fixed inset-0 z-[200] flex items-end md:items-center justify-center">
           <div className="absolute inset-0 bg-brand-dark/95 backdrop-blur-lg" onClick={() => setShowExitPopup(false)}></div>
-          <div className="relative bg-white w-full max-w-2xl max-h-[95vh] overflow-y-auto rounded-2xl md:rounded-[3rem] shadow-[0_50px_100px_rgba(0,0,0,0.5)] border-2 md:border-4 border-brand-red animate-[bounceIn_0.5s_ease-out]">
+          <div className="relative bg-white w-full md:max-w-2xl md:mx-4 max-h-[90vh] overflow-y-auto rounded-t-3xl md:rounded-3xl shadow-[0_-20px_60px_rgba(0,0,0,0.3)] md:shadow-[0_50px_100px_rgba(0,0,0,0.5)] border-t-4 md:border-4 border-brand-red animate-[bounceIn_0.4s_ease-out]">
+            {/* Mobile drag indicator */}
+            <div className="md:hidden w-12 h-1.5 bg-gray-300 rounded-full mx-auto mt-3"></div>
+
             {/* Close Button */}
             <button
               onClick={() => setShowExitPopup(false)}
-              className="absolute top-2 right-2 md:top-4 md:right-4 text-white hover:text-brand-red transition-colors z-[60] w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-brand-dark/40 rounded-full"
+              className="absolute top-3 right-3 md:top-4 md:right-4 text-white hover:text-brand-red transition-colors z-[60] w-9 h-9 md:w-12 md:h-12 flex items-center justify-center bg-brand-dark/60 rounded-full"
               aria-label="Cerrar"
             >
-              <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12" /></svg>
+              <svg className="w-5 h-5 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
 
-            <div className="bg-brand-red py-4 md:py-6 px-4 md:px-8 text-center text-white relative">
-              <h2 className="relative z-10 font-black text-2xl md:text-5xl uppercase tracking-tighter leading-none mb-1 italic">¡ESPERA!</h2>
-              <p className="relative z-10 font-bold text-xs md:text-lg uppercase opacity-90">Tu salud merece este último intento</p>
+            <div className="bg-brand-red py-5 md:py-6 px-4 md:px-8 text-center text-white relative mt-2 md:mt-0">
+              <h2 className="relative z-10 font-black text-3xl md:text-5xl uppercase tracking-tighter leading-none mb-1 italic">¡ESPERA!</h2>
+              <p className="relative z-10 font-bold text-sm md:text-lg uppercase opacity-90">Tu descuento se está escapando</p>
             </div>
 
-            <div className="p-4 md:p-8 text-center">
-              <p className="text-gray-600 text-sm md:text-xl font-medium leading-relaxed mb-4 md:mb-6">
-                No dejes pasar esta oportunidad.
-                <span className="font-black text-brand-dark text-base md:text-2xl block mt-2 uppercase">¿Vas a dejar que la inflamación gane?</span>
+            <div className="p-5 md:p-8 text-center">
+              <p className="text-gray-700 text-base md:text-xl font-bold leading-snug mb-4 md:mb-6">
+                <span className="font-black text-brand-dark text-xl md:text-2xl block uppercase">¿Vas a dejar pasar el 89% OFF?</span>
               </p>
 
-              <div className="bg-brand-yellow/20 border-2 border-dashed border-brand-yellow p-3 md:p-6 rounded-2xl mb-4 md:mb-6 relative">
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-yellow text-brand-dark px-3 py-0.5 rounded-full font-black text-[9px] md:text-xs uppercase">CUPÓN EXTRA</div>
-                <p className="text-gray-500 font-bold uppercase text-[9px] md:text-xs mb-2">¡TOCA PARA COPIAR!</p>
+              <div className="bg-brand-yellow/30 border-2 border-dashed border-brand-yellow p-4 md:p-6 rounded-2xl mb-5 md:mb-6 relative">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-yellow text-brand-dark px-4 py-1 rounded-full font-black text-xs uppercase">CUPÓN EXTRA</div>
+                <p className="text-gray-600 font-bold uppercase text-xs mb-2 mt-1">¡TOCA PARA COPIAR!</p>
                 <div
                   onClick={handleCopyCoupon}
                   className="cursor-pointer active:scale-95 transition-transform"
                 >
-                  <span className={`block text-3xl md:text-5xl font-impact tracking-tight bg-white px-6 md:px-10 py-2 md:py-4 rounded-xl shadow-lg border-3 ${isCopied ? 'text-brand-lime border-brand-lime' : 'text-brand-red border-brand-red animate-glow-fast'} transition-all`}>
+                  <span className={`block text-4xl md:text-5xl font-impact tracking-tight bg-white px-8 md:px-10 py-3 md:py-4 rounded-xl shadow-lg border-4 ${isCopied ? 'text-brand-lime border-brand-lime' : 'text-brand-red border-brand-red animate-glow-fast'} transition-all`}>
                     {isCopied ? '¡COPIADO!' : 'LOQUIERO'}
                   </span>
                 </div>
-                <p className="text-brand-red font-black text-base md:text-2xl uppercase mt-2">¡20% EXTRA!</p>
+                <p className="text-brand-red font-black text-xl md:text-2xl uppercase mt-3">¡20% EXTRA!</p>
               </div>
 
               <a
                 href={checkoutUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block bg-brand-lime text-white text-base md:text-2xl font-black px-6 md:px-10 py-4 md:py-6 rounded-full shadow-lg hover:scale-105 active:scale-95 transition-all w-full uppercase text-center mb-3"
+                className="block bg-brand-lime text-white text-lg md:text-2xl font-black px-6 md:px-10 py-5 md:py-6 rounded-full shadow-xl hover:scale-105 active:scale-95 transition-all w-full uppercase text-center mb-4 animate-pulse"
               >
-                SÍ, QUIERO MI CAMBIO AHORA
+                QUIERO MI DESCUENTO
               </a>
 
               <button
                 onClick={() => setShowExitPopup(false)}
-                className="text-gray-400 font-bold uppercase text-[9px] md:text-sm hover:text-brand-red transition-colors underline"
+                className="text-gray-400 font-bold uppercase text-xs md:text-sm hover:text-brand-red transition-colors underline py-2"
               >
                 No gracias, prefiero seguir igual
               </button>
