@@ -44,7 +44,7 @@ const App: React.FC = () => {
     const pillRotationInterval = setInterval(() => {
       setCurrentMessageIndex(prev => (prev + 1) % 3);
       setPurchaserCount(prev => {
-        const delta = Math.floor(Math.random() * 9) - 4; 
+        const delta = Math.floor(Math.random() * 9) - 4;
         const next = prev + delta;
         return next < 15 ? 15 + Math.floor(Math.random() * 10) : (next > 75 ? 75 - Math.floor(Math.random() * 10) : next);
       });
@@ -58,6 +58,22 @@ const App: React.FC = () => {
       setCurrentImageIndex(prev => (prev + 1) % 7);
     }, 4000);
 
+    // Detect mobile device
+    const isMobile = window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window;
+
+    // Mobile exit intent variables
+    let lastScrollY = window.scrollY;
+    let scrollUpCount = 0;
+    let mobileInactivityTimer: ReturnType<typeof setTimeout> | null = null;
+    let thresholdReachedTime: number | null = null;
+
+    const showPopup = () => {
+      if (!hasShownExitPopup && hasReachedThreshold) {
+        setShowExitPopup(true);
+        setHasShownExitPopup(true);
+      }
+    };
+
     // Scroll Tracking Logic (70% threshold)
     const handleScroll = () => {
       const winHeight = window.innerHeight;
@@ -67,26 +83,62 @@ const App: React.FC = () => {
 
       if (scrolledPercentage >= 0.7 && !hasReachedThreshold) {
         setHasReachedThreshold(true);
+        thresholdReachedTime = Date.now();
+
+        // Start mobile inactivity timer (45 seconds after reaching threshold)
+        if (isMobile && !hasShownExitPopup) {
+          mobileInactivityTimer = setTimeout(() => {
+            showPopup();
+          }, 45000);
+        }
+      }
+
+      // Mobile: Detect rapid scroll up (exit intent)
+      if (isMobile && hasReachedThreshold && !hasShownExitPopup) {
+        const scrollDelta = lastScrollY - scrollPos;
+
+        // If scrolling up significantly
+        if (scrollDelta > 50) {
+          scrollUpCount++;
+          // Show popup after 3 rapid scroll-ups
+          if (scrollUpCount >= 3) {
+            showPopup();
+          }
+        } else if (scrollDelta < -20) {
+          // Reset counter if scrolling down
+          scrollUpCount = 0;
+        }
+      }
+
+      lastScrollY = scrollPos;
+
+      // Reset inactivity timer on scroll (mobile)
+      if (isMobile && mobileInactivityTimer && !hasShownExitPopup) {
+        clearTimeout(mobileInactivityTimer);
+        mobileInactivityTimer = setTimeout(() => {
+          showPopup();
+        }, 45000);
       }
     };
 
-    // Exit Intent Logic (Only if threshold is met)
+    // Desktop: Exit Intent Logic (mouse leaves top)
     const handleMouseLeave = (e: MouseEvent) => {
-      // Check if threshold reached, not shown yet, and mouse left towards the top
       if (e.clientY <= 0 && !hasShownExitPopup && hasReachedThreshold) {
-        setShowExitPopup(true);
-        setHasShownExitPopup(true);
+        showPopup();
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    document.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    if (!isMobile) {
+      document.addEventListener('mouseleave', handleMouseLeave);
+    }
 
     return () => {
       clearInterval(timer);
       clearInterval(pillRotationInterval);
       clearInterval(imageRotationInterval);
       clearTimeout(pillTimer);
+      if (mobileInactivityTimer) clearTimeout(mobileInactivityTimer);
       window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('mouseleave', handleMouseLeave);
     };
