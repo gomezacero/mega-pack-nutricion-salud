@@ -1,0 +1,9 @@
+{
+  "buildCommand": "npm run build:all",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/superpack-saludable", "destination": "/superpack-saludable/index.html" },
+    { "source": "/superpack-saludable/", "destination": "/superpack-saludable/index.html" },
+    { "source": "/superpack-saludable/:path*", "destination": "/superpack-saludable/:path*" }
+  ]
+}

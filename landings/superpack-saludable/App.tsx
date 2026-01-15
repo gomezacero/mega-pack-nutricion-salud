@@ -15,14 +15,16 @@ const App: React.FC = () => {
 
   const checkoutUrl = "https://pay.hotmart.com/X98798544T?checkoutMode=10&bid=1768354873756";
 
+  const basePath = import.meta.env.BASE_URL;
+
   const heroImages = [
-    '/images/img1.webp',
-    '/images/img2.webp',
-    '/images/img3.webp',
-    '/images/img4.webp',
-    '/images/img5.webp',
-    '/images/img6.webp',
-    '/images/img7.webp',
+    `${basePath}images/img1.webp`,
+    `${basePath}images/img2.webp`,
+    `${basePath}images/img3.webp`,
+    `${basePath}images/img4.webp`,
+    `${basePath}images/img5.webp`,
+    `${basePath}images/img6.webp`,
+    `${basePath}images/img7.webp`,
   ];
 
   const names = [
@@ -155,53 +157,53 @@ const App: React.FC = () => {
   ];
 
   const ebooks = [
-    { 
-      title: 'Libro Maestro VIVE SALUDABLE', 
-      type: 'GUÍA PRINCIPAL', 
-      desc: 'El sistema exacto de 5 semanas para resetear tu metabolismo.', 
-      value: '$47', 
-      tag: 'OBLIGATORIO', 
-      image: 'https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?q=80&w=400&h=550&auto=format&fit=crop' 
+    {
+      title: 'Libro Maestro VIVE SALUDABLE',
+      type: 'GUÍA PRINCIPAL',
+      desc: 'El sistema exacto de 5 semanas para resetear tu metabolismo.',
+      value: '$47',
+      tag: 'OBLIGATORIO',
+      image: `${basePath}images/img1.webp`
     },
-    { 
-      title: '+1.000 Recetas Sin Gluten', 
-      type: 'EBOOK PREMIUM', 
-      desc: 'Desayunos, almuerzos y cenas sin gluten ni azúcar.', 
-      value: '$37', 
-      tag: 'SUPER VENTAS', 
-      image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=400&h=550&auto=format&fit=crop' 
+    {
+      title: '+1.000 Recetas Sin Gluten',
+      type: 'EBOOK PREMIUM',
+      desc: 'Desayunos, almuerzos y cenas sin gluten ni azúcar.',
+      value: '$37',
+      tag: 'SUPER VENTAS',
+      image: `${basePath}images/img3.webp`
     },
-    { 
-      title: 'Poder Detox & Smoothies', 
-      type: 'MANUAL DIGITAL', 
-      desc: 'Limpia tu hígado y colon de forma natural y segura.', 
-      value: '$27', 
-      tag: 'REGALO', 
-      image: 'https://images.unsplash.com/photo-1610970881699-44a5587cabec?q=80&w=400&h=550&auto=format&fit=crop' 
+    {
+      title: 'Poder Detox & Smoothies',
+      type: 'MANUAL DIGITAL',
+      desc: 'Limpia tu hígado y colon de forma natural y segura.',
+      value: '$27',
+      tag: 'REGALO',
+      image: `${basePath}images/img2.webp`
     },
-    { 
-      title: 'Airfryer Saludable', 
-      type: 'EBOOK ESPECIAL', 
-      desc: 'Tus platos favoritos con un 90% menos de grasa.', 
-      value: '$27', 
-      tag: 'REGALO', 
-      image: 'https://images.unsplash.com/photo-1585238342024-78d387f4a707?q=80&w=400&h=550&auto=format&fit=crop' 
+    {
+      title: 'Airfryer Saludable',
+      type: 'EBOOK ESPECIAL',
+      desc: 'Tus platos favoritos con un 90% menos de grasa.',
+      value: '$27',
+      tag: 'REGALO',
+      image: `${basePath}images/img7.webp`
     },
-    { 
-      title: 'Guía de Suplementos', 
-      type: 'MANUAL CIENTÍFICO', 
-      desc: 'Lo que sí funciona para tu quema de grasa.', 
-      value: '$25', 
-      tag: 'REGALO', 
-      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=400&h=550&auto=format&fit=crop' 
+    {
+      title: 'Guía de Suplementos',
+      type: 'MANUAL CIENTÍFICO',
+      desc: 'Lo que sí funciona para tu quema de grasa.',
+      value: '$25',
+      tag: 'REGALO',
+      image: `${basePath}images/img5.webp`
     },
-    { 
-      title: 'Acceso a Nuevas guías cada mes', 
-      type: 'ACCESO TOTAL', 
-      desc: 'Nuevas guías y recetas cada mes sin costo extra.', 
-      value: '$25', 
-      tag: 'VALOR INFINITO', 
-      image: 'https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?q=80&w=400&h=550&auto=format&fit=crop' 
+    {
+      title: 'Acceso a Nuevas guías cada mes',
+      type: 'ACCESO TOTAL',
+      desc: 'Nuevas guías y recetas cada mes sin costo extra.',
+      value: '$25',
+      tag: 'VALOR INFINITO',
+      image: `${basePath}images/img6.webp`
     }
   ];
 
